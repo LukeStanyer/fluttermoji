@@ -83,7 +83,7 @@ class FluttermojiController extends GetxController {
   ///  adds the new name to controller
   ///
   ///  Thereby updating all the states which are listening to controller
-  void setFluttermoji({String fluttermojiNew = ''}) async {
+  Future<void> setFluttermoji({String fluttermojiNew = ''}) async {
     if (fluttermojiNew.isEmpty) {
       fluttermojiNew = getFluttermojiFromOptions();
     }
@@ -93,6 +93,7 @@ class FluttermojiController extends GetxController {
     await pref.setString(
         'fluttermojiSelectedOptions', jsonEncode(selectedOptions));
     update();
+    return;
   }
 
   /// Generates a [String] fluttermoji from [selectedOptions] pref
